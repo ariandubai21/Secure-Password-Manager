@@ -27,7 +27,6 @@ fernet = Fernet(key)
 
 # Load saved passwords
 if os.path.exists(ENCRYPTED_FILE):
-
     with open(ENCRYPTED_FILE, "rb") as file:
         encrypted_data = file.read()
 
@@ -36,7 +35,6 @@ if os.path.exists(ENCRYPTED_FILE):
     )
 
 elif os.path.exists(OLD_FILE):
-
     with open(OLD_FILE, "r") as file:
         passwords = json.load(file)
 
@@ -46,7 +44,6 @@ else:
 
 # Save passwords with encryption
 def save_passwords():
-
     data = json.dumps(passwords).encode()
     encrypted_data = fernet.encrypt(data)
 
@@ -56,7 +53,6 @@ def save_passwords():
 
 # Generate a strong password
 def generate_password():
-
     characters = string.ascii_letters + string.digits + "!@#$%&*"
 
     password = "".join(
@@ -67,14 +63,13 @@ def generate_password():
 
 
 # Start the application
-print("Welcome to Secure Password Manager!")
+print("Hello, welcome to Password Manager!")
+print("To start the app, write start")
 
-print("\nTo start the app, write 'start'")
-
-start = input("Enter: ")
+start = input("\nEnter: ")
 
 while start.lower() != "start":
-    print("Invalid command! Please write 'start'.")
+    print("Please write start to continue.")
     start = input("Enter: ")
 
 
